@@ -80,6 +80,7 @@ static FirebasePlugin *firebasePlugin;
 
     NSMutableDictionary* message = [NSMutableDictionary dictionaryWithCapacity:1];
     [message setObject:[NSNumber numberWithBool:enabled] forKey:@"isEnabled"];
+    [message setObject: [NSString stringWithFormat:@"%@", [FIRMessaging messaging].APNSToken] forKey:@"deviceToken"];
     CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:message];
     [self.commandDelegate sendPluginResult:commandResult callbackId:command.callbackId];
 }
